@@ -24,9 +24,6 @@
 
 <h2>Students w/Paging</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -73,7 +70,7 @@
 
 Page : @currentPageNumber / @totalPages
 <br />
-@{ if (prevPageNumber > 1)
+@{ if (currentPageNumber > 1)
     {
     <a href="Paging?pageNumber=@prevPageNumber&pageSize=@pageSize">Previous Page</a>
     }
