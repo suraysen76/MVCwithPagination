@@ -20,13 +20,13 @@
                 <div class="nav-collapse collapse">
                     <ul class="nav">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        
                         <li>@Html.ActionLink("Students", "Index", "Students")</li>
-                        <li>@Html.ActionLink("Students Paging", "Paging", "Paging", new { pageSize = 3, pageNumber = 1 }, null)</li>
+                        <li>@Html.ActionLink("Students Paging", "Paging", "Paging", new { pageSize = 10, pageNumber = 1 }, null)</li>
                         <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
                         <li>@Html.ActionLink("Instructors", "Index", "Instructor")</li>
-                        <li>@Html.ActionLink("Departments", "Index", "Department")</li>
-                        <li>@Html.ActionLink("Top Students", "Top5", new { pageSize = 3 })</li>
+                        @*<li>@Html.ActionLink("Departments", "Index", "Department")</li>
+                        <li>@Html.ActionLink("Top Students", "Top5", new { pageSize = 3 })</li>*@
                     </ul>
                 </div>
             </div>

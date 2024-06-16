@@ -18,6 +18,7 @@ namespace MVCwithPagination.Controllers
         // GET: Students
         public ActionResult Index()
         {
+            var cnt = db.Students.Count();
             return View(db.Students.ToList());
         }
        

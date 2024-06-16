@@ -22,11 +22,19 @@ namespace MVCwithPagination.Controllers
         }
         public ActionResult Paging(int pageSize, int pageNumber = 1)
         {
-
+            var masterModel = new MasterModel();
             int skip = pageSize * (pageNumber - 1);
-            var students = db.Students.OrderByDescending
+            var dbStudents = db.Students;
+            var cnt = dbStudents.Count();
+            
+            var totalPages = Math.Ceiling((float)cnt / pageSize);
+
+           var students = dbStudents.OrderByDescending
                                  (m => m.LastName).Skip(skip).Take(pageSize);
-            return View(students);
+            masterModel.Students = students;
+            masterModel.Paging = new PagingModel() { PageNumber=pageNumber,PageSize=pageSize,TotalPages=(int) totalPages };
+            
+            return View(masterModel);
         }
 
         // GET: Paging/Details/5
