@@ -11,14 +11,14 @@ using MVCwithPagination.Models;
 
 namespace MVCwithPagination.Controllers
 {
-    public class EnrollmentsController : Controller
+    public class GradingsController : Controller
     {
         private SchoolContext db = new SchoolContext();
 
         // GET: Enrollments
         public ActionResult Index()
         {
-            var enrollments = db.Enrollments.Include(e => e.Course).Include(e => e.Student);
+            var enrollments = db.Enrollments.Include(e => e.Course).Include(e => e.Student).OrderBy(o=>o.Student.LastName);
             return View(enrollments.ToList());
         }
 
