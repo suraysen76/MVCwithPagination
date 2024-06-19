@@ -3,30 +3,30 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - MVC with Pagination
-    </title>
+    <title>@ViewBag.Title - MVC with Pagination </title>
     @Styles.Render("~/Content/css")
-
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
                 <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar">Menu</span>
-                    
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("MVC with Pagination", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" ,@Style="color:white"})
+                @Html.ActionLink("MVC with Pagination University", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 <div class="nav-collapse collapse">
-                    <ul class="nav" style="color:white">
+                    <ul class="nav">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        
+
                         <li>@Html.ActionLink("Students", "Index", "Students")</li>
-                        <li>@Html.ActionLink("Students Paging", "Paging", "Paging", new { pageSize = 10, pageNumber = 1 }, null)</li>
+                        <li>@Html.ActionLink("Students Paging", "Paging", "Paging", new { pageSize = 4, pageNumber = 1 }, null)</li>
                         <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
-                        <li>@Html.ActionLink("Gradings", "Index", "Gradings")</li>
+                        <li>@Html.ActionLink("Instructors", "Index", "Instructor")</li>
                         @*<li>@Html.ActionLink("Departments", "Index", "Department")</li>
-                        <li>@Html.ActionLink("Top Students", "Top5", new { pageSize = 3 })</li>*@
+                            <li>@Html.ActionLink("Top Students", "Top5", new { pageSize = 3 })</li>*@
                     </ul>
                 </div>
             </div>

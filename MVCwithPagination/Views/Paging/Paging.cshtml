@@ -59,23 +59,36 @@
                 @Html.DisplayFor(modelItem => item.EnrollmentDate)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>
     }
 
 </table>
+<table>
+    <tr>
+        <th colspan="2">Page : @currentPageNumber / @totalPages</th>
+    </tr>
+    <tr>
+        <th>
+            @{ if (currentPageNumber > 1)
+                {
+                    <a href="Paging?pageNumber=1&pageSize=@pageSize">First Page&nbsp;&nbsp;  </a>
+                    <a href="Paging?pageNumber=@prevPageNumber&pageSize=@pageSize">Previous Page&nbsp;&nbsp;  </a>
+                }
+            }
+        </th>        
+        <th>
+            @{ if (nextPageNumber <= totalPages)
+                {
+                    <a href="Paging?pageNumber=@nextPageNumber&pageSize=@pageSize">Next Page&nbsp;&nbsp;  </a>
+                    <a href="Paging?pageNumber=@totalPages&pageSize=@pageSize">Last Page&nbsp;&nbsp;  </a>
+                }
+            }
+        </th>
+    </tr>
+</table>
 
-Page : @currentPageNumber / @totalPages
-<br />
-@{ if (currentPageNumber > 1)
-    {
-    <a href="Paging?pageNumber=@prevPageNumber&pageSize=@pageSize">Previous Page</a>
-    }
-    if (nextPageNumber <= totalPages)
-    {
-        <a href="Paging?pageNumber=@nextPageNumber&pageSize=@pageSize">Next Page</a>
-    }
-}
+

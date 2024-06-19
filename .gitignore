@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/MVCwithPagination/Content/bootstrap-theme.css
+/MVCwithPagination/Content/bootstrap-theme.min.css
+/MVCwithPagination/Content/bootstrap.css
+/MVCwithPagination/Content/bootstrap.min.css
+/MVCwithPagination/Scripts/jquery.validate.js
+/MVCwithPagination/Scripts/jquery.validate.min.js

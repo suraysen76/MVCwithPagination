@@ -7,14 +7,14 @@ using System.Web;
 
 namespace MVCwithPagination.Models
 {
-    public class Course
+    public class CourseModel
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int Id { get; set; }
         [DisplayName("Course Id")]
-        public int CourseID { get; set; }
-        public string Title { get; set; }
+        public int CourseId { get; set; }
+        public string CourseTitle { get; set; }
         public int Credits { get; set; }
 
-        public virtual ICollection<Enrollment> Enrollments { get; set; }
+        public virtual ICollection<EnrollmentModel> Grades { get; set; }
     }
 }

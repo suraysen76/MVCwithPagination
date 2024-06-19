@@ -127,7 +127,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
-    <Compile Include="Controllers\EnrollmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PagingController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
@@ -136,11 +135,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Course.cs" />
-    <Compile Include="Models\Enrollment.cs" />
+    <Compile Include="Models\CourseModel.cs" />
+    <Compile Include="Models\EnrollmentModel.cs" />
     <Compile Include="Models\MasterModel.cs" />
     <Compile Include="Models\PagingModel.cs" />
-    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -189,18 +188,17 @@
     <Content Include="Views\Courses\Details.cshtml" />
     <Content Include="Views\Courses\Edit.cshtml" />
     <Content Include="Views\Courses\Index.cshtml" />
-    <Content Include="Views\Enrollments\Create.cshtml" />
-    <Content Include="Views\Enrollments\Delete.cshtml" />
-    <Content Include="Views\Enrollments\Details.cshtml" />
-    <Content Include="Views\Enrollments\Edit.cshtml" />
-    <Content Include="Views\Enrollments\Index.cshtml" />
     <Content Include="Views\Students\Top5.cshtml" />
     <Content Include="Views\Paging\Create.cshtml" />
     <Content Include="Views\Paging\Delete.cshtml" />
     <Content Include="Views\Paging\Details.cshtml" />
     <Content Include="Views\Paging\Edit.cshtml" />
-    <Content Include="Views\Paging\Index.cshtml" />
     <Content Include="Views\Paging\Paging.cshtml" />
+    <Content Include="Views\Enrolments\Create.cshtml" />
+    <Content Include="Views\Enrolments\Delete.cshtml" />
+    <Content Include="Views\Enrolments\Details.cshtml" />
+    <Content Include="Views\Enrolments\Edit.cshtml" />
+    <Content Include="Views\Enrolments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

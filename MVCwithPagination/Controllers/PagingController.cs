@@ -44,7 +44,7 @@ namespace MVCwithPagination.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            StudentModel student = db.Students.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -63,7 +63,7 @@ namespace MVCwithPagination.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,LastName,FirstMidName,EnrollmentDate")] Student student)
+        public ActionResult Create(StudentModel student)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace MVCwithPagination.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            StudentModel student = db.Students.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -95,7 +95,7 @@ namespace MVCwithPagination.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,LastName,FirstMidName,EnrollmentDate")] Student student)
+        public ActionResult Edit( StudentModel student)
         {
             if (ModelState.IsValid)
             {
@@ -113,7 +113,7 @@ namespace MVCwithPagination.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            StudentModel student = db.Students.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -126,7 +126,7 @@ namespace MVCwithPagination.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Student student = db.Students.Find(id);
+            StudentModel student = db.Students.Find(id);
             db.Students.Remove(student);
             db.SaveChanges();
             return RedirectToAction("Index");

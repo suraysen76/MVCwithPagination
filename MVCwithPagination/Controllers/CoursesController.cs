@@ -28,7 +28,7 @@ namespace MVCwithPagination.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = db.Courses.Find(id);
+            CourseModel course = db.Courses.Find(id);
             if (course == null)
             {
                 return HttpNotFound();
@@ -47,7 +47,7 @@ namespace MVCwithPagination.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CourseID,Title,Credits")] Course course)
+        public ActionResult Create( CourseModel course)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace MVCwithPagination.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = db.Courses.Find(id);
+            CourseModel course = db.Courses.Find(id);
             if (course == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace MVCwithPagination.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CourseID,Title,Credits")] Course course)
+        public ActionResult Edit( CourseModel course)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace MVCwithPagination.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = db.Courses.Find(id);
+            CourseModel course = db.Courses.Find(id);
             if (course == null)
             {
                 return HttpNotFound();
@@ -110,7 +110,7 @@ namespace MVCwithPagination.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Course course = db.Courses.Find(id);
+            CourseModel course = db.Courses.Find(id);
             db.Courses.Remove(course);
             db.SaveChanges();
             return RedirectToAction("Index");

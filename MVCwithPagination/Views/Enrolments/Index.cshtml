@@ -1,10 +1,10 @@
-﻿@model IEnumerable<MVCwithPagination.Models.CourseModel>
+﻿@model IEnumerable<MVCwithPagination.Models.EnrollmentModel>
 
 @{
-    ViewBag.Title = "Courses";
+    ViewBag.Title = "Grades";
 }
 
-<h2>Courses</h2>
+<h2>Grades</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,13 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CourseId)
+            @Html.DisplayNameFor(model => model.Course.CourseTitle)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CourseTitle)
+            @Html.DisplayNameFor(model => model.Student.LastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Credits)
+            @Html.DisplayNameFor(model => model.Grade)
         </th>
         <th></th>
     </tr>
@@ -27,13 +27,13 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CourseId)
+                @Html.DisplayFor(modelItem => item.Course.CourseTitle)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CourseTitle)
+                @Html.DisplayFor(modelItem => item.Student.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Credits)
+                @Html.DisplayFor(modelItem => item.Grade)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
