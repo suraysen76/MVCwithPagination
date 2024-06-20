@@ -1,8 +1,12 @@
-﻿@model MVCwithPagination.Models.StudentModel
+﻿@model MVCwithPagination.Models.MasterModel
 
 @{
     ViewBag.Title = "Student Details";
+    var pageSize = (int)Model.Paging.PageSize;
+    var pageNumber = (int)Model.Paging.PageNumber;
 }
+}
+
 
 <h2>Student Details</h2>
 
@@ -11,41 +15,41 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Id)
+            @Html.DisplayNameFor(model => model.Students.First().Id)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Id)
+            @Html.DisplayFor(model => model.Students.First().Id)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.Students.First().LastName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstMidName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstMidName)
+            @Html.DisplayFor(model => model.Students.First().LastName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.EnrollmentDate)
+            @Html.DisplayNameFor(model => model.Students.First().FirstMidName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EnrollmentDate)
+            @Html.DisplayFor(model => model.Students.First().FirstMidName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Students.First().EnrollmentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Students.First().EnrollmentDate)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Students.First().Id }) |
 
-    @Html.ActionLink("Back to List", "Paging", new { pageSize = 4, pageNumber = 1 }, null)
-    
+    @Html.ActionLink("Back to List", "Paging", new { pageSize = pageSize, pageNumber = pageNumber }, null)
+
 </p>

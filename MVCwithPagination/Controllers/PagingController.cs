@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -20,8 +22,9 @@ namespace MVCwithPagination.Controllers
         {
             return View(db.Students.ToList());
         }
-        public ActionResult Paging(int pageSize, int pageNumber = 1)
+        public ActionResult Paging( int pageNumber = 1)
         {
+            var pageSize = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["PageSize"]);
             var masterModel = new MasterModel();
             int skip = pageSize * (pageNumber - 1);
             var dbStudents = db.Students;
@@ -32,7 +35,13 @@ namespace MVCwithPagination.Controllers
            var students = dbStudents.OrderByDescending
                                  (m => m.LastName).Skip(skip).Take(pageSize);
             masterModel.Students = students;
-            masterModel.Paging = new PagingModel() { PageNumber=pageNumber,PageSize=pageSize,TotalPages=(int) totalPages };
+            
+            masterModel.Paging = new PagingModel() 
+            { 
+                PageNumber=pageNumber,
+                PageSize=pageSize,
+                TotalPages=(int) totalPages 
+            };
             
             return View(masterModel);
         }
@@ -40,16 +49,25 @@ namespace MVCwithPagination.Controllers
         // GET: Paging/Details/5
         public ActionResult Details(int? id)
         {
+            var masterModel = new MasterModel();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StudentModel student = db.Students.Find(id);
+            var student = db.Students.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            var studentModel = new List<StudentModel>();
+            studentModel.Add(student);
+            masterModel.Students=studentModel;
+
+            var pageSize = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["PageSize"]);
+            masterModel.Paging = new PagingModel() { PageNumber =1, PageSize = pageSize, TotalPages = 1 };
+
+
+            return View(masterModel);
         }
 
         // GET: Paging/Create
@@ -65,11 +83,12 @@ namespace MVCwithPagination.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(StudentModel student)
         {
+            var pageSize = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["PageSize"]);
             if (ModelState.IsValid)
             {
                 db.Students.Add(student);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Paging", new { pageNumber = 1 });
             }
 
             return View(student);
@@ -78,16 +97,25 @@ namespace MVCwithPagination.Controllers
         // GET: Paging/Edit/5
         public ActionResult Edit(int? id)
         {
+            var masterModel = new MasterModel();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            StudentModel student = db.Students.Find(id);
+            var student = db.Students.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
             }
-            return View(student);
+            var studentModel = new List<StudentModel>();
+            studentModel.Add(student);
+            masterModel.Students = studentModel;
+
+            var pageSize = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["PageSize"]);
+            masterModel.Paging = new PagingModel() { PageNumber = 1, PageSize = pageSize, TotalPages = 1 };
+
+
+            return View(masterModel);
         }
 
         // POST: Paging/Edit/5
@@ -101,7 +129,7 @@ namespace MVCwithPagination.Controllers
             {
                 db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Paging", new { pageNumber = 1 }); ;
             }
             return View(student);
         }
@@ -129,7 +157,7 @@ namespace MVCwithPagination.Controllers
             StudentModel student = db.Students.Find(id);
             db.Students.Remove(student);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Paging", new { pageNumber = 1 });
         }
 
         protected override void Dispose(bool disposing)
