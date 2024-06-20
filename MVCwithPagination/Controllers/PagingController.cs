@@ -32,8 +32,10 @@ namespace MVCwithPagination.Controllers
             
             var totalPages = Math.Ceiling((float)cnt / pageSize);
 
-           var students = dbStudents.OrderByDescending
-                                 (m => m.LastName).Skip(skip).Take(pageSize);
+           var students = dbStudents
+                .OrderByDescending(m => m.LastName)
+                .Skip(skip)
+                .Take(pageSize);
             masterModel.Students = students;
             
             masterModel.Paging = new PagingModel() 
