@@ -20,11 +20,20 @@ namespace MVCwithPagination.Controllers
         // GET: Paging
         public ActionResult Index()
         {
-            return View(db.Students.ToList());
+            return View();
         }
-        public ActionResult Paging( int pageNumber = 1)
+
+        [HttpPost]
+        public ActionResult Index(PagingModel model)
         {
-            var pageSize = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["PageSize"]);
+            return RedirectToAction("Paging", new {pageSize=model.PageSize, pageNumber = 1 });
+        }
+        public ActionResult Paging( int pageSize=0, int pageNumber = 1)
+        {
+            if (pageSize == 0)
+            {
+                pageSize = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["PageSize"]);
+            }
             var masterModel = new MasterModel();
             int skip = pageSize * (pageNumber - 1);
             var dbStudents = db.Students;
